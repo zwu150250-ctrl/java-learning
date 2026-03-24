@@ -1,0 +1,59 @@
+package Test7;
+
+public class StudentTest3 {
+    public static void main(String[] args) {
+        Student[] arr = new Student[3];
+
+        Student stu1 = new Student(1, "张三", 19);
+        Student stu2 = new Student(2, "李四", 18);
+        Student stu3 = new Student(3, "王五", 19);
+
+        arr[0] = stu1;
+        arr[1] = stu2;
+        arr[2] = stu3;
+
+        //要求五
+        int index = getIndex(arr,3);
+
+        //判断索引
+        if(index >= 0){
+            //存在,年龄加1
+            Student stu = arr[index];
+            int newAge = stu.getAge() + 1;
+            stu.setAge(newAge);
+            //遍历数组
+            printArr(arr);
+        }else{
+            System.out.println("当前id不存在,修改失败");
+        }
+    }
+
+    //找到id在数组中的索引
+    public static int getIndex(Student[] arr,int id) {
+        for (int i = 0; i < arr.length; i++) {
+            Student stu = arr[i];
+            if(stu != null){
+                int sid = stu.getId();
+                if(sid == id){
+                    return i;
+                }
+            }
+        }
+        //循环结束之后,还没有找到,表示不存在
+        return -1;
+    }
+
+
+
+
+
+    //定义一个遍历数组的方法
+    public static void printArr(Student[] arr){
+        for (int i = 0; i < arr.length; i++) {
+            Student stu = arr[i];
+            if(arr[i] != null){
+                System.out.println(stu.getId() + "," + stu.getName() + "," + stu.getAge());
+            }
+        }
+    }
+}
